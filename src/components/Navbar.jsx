@@ -4,8 +4,14 @@ import { useMediaQuery } from "react-responsive";
 import { GoNote } from "react-icons/go";
 import { GoThreeBars } from "react-icons/go";
 
-const Navbar = ({ activeNote, onDeleteNote, isNotesOpen, setIsNotesOpen }) => {
-  const [edit, setEdit] = useState(true);
+const Navbar = ({
+  activeNote,
+  onDeleteNote,
+  isNotesOpen,
+  setIsNotesOpen,
+  edit,
+  setEdit,
+}) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const isMobile = useMediaQuery({ query: `(max-width: 640px)` });
@@ -13,7 +19,7 @@ const Navbar = ({ activeNote, onDeleteNote, isNotesOpen, setIsNotesOpen }) => {
   if (!isMobile)
     return (
       <div className="w-full">
-        <div className="flex justify-between items-center w-full px-4 md:px-14 py-5 mb-10">
+        <div className="flex justify-between items-center w-full px-4 md:px-14 pt-5">
           <button
             className="text-3xl text-gray-600 font-bold"
             onClick={() => setIsNotesOpen(!isNotesOpen)}
