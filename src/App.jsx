@@ -52,8 +52,10 @@ function App() {
 
   const [isNotesOpen, setIsNotesOpen] = useState(true);
 
+  const [edit, setEdit] = useState(true);
+
   return (
-    <div className="flex w-screen h-screen max-h-screen overflow-hidden">
+    <div className="flex w-screen h-screen overflow-hidden">
       <Sidebar
         notes={notes}
         onAddNote={onAddNote}
@@ -72,8 +74,14 @@ function App() {
           onDeleteNote={onDeleteNote}
           isNotesOpen={isNotesOpen}
           setIsNotesOpen={setIsNotesOpen}
+          edit={edit}
+          setEdit={setEdit}
         />
-        <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
+        <Main
+          activeNote={getActiveNote()}
+          onUpdateNote={onUpdateNote}
+          edit={edit}
+        />
       </div>
     </div>
   );
