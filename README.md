@@ -15,4 +15,4 @@ Live Demo - [Note App](https://reihabibi-noteapp.netlify.app).
 
 ---
 
-The base source code is based from - [notes-app-tutorial](https://github.com/jrgrimshaw/notes-app-tutorial).
+The base source code - [notes-app-tutorial](https://github.com/jrgrimshaw/notes-app-tutorial).
