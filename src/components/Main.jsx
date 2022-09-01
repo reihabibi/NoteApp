@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
-import React, { useState } from "react";
+import remarkGfm from "remark-gfm";
 
-const Main = ({ activeNote, onUpdateNote }) => {
+const Main = ({ activeNote, onUpdateNote, edit }) => {
   const onEditField = (field, value) => {
     onUpdateNote({
       ...activeNote,
@@ -9,8 +9,6 @@ const Main = ({ activeNote, onUpdateNote }) => {
       lastModified: Date.now(),
     });
   };
-
-  const [edit, setEdit] = useState(true);
 
   if (!activeNote)
     return (
@@ -23,12 +21,12 @@ const Main = ({ activeNote, onUpdateNote }) => {
     <div className="w-full h-full">
       <div
         className={
-          "w-full h-full px-4 md:px-10 lg:px-32 my-8 overflow-hidden " +
+          "w-full h-full mt-2 md:mt-8 px-4 md:px-10 lg:px-36 overflow-hidden " +
           (!edit ? "toggle--edit" : "")
         }
       >
         <input
-          className="w-full mb-2 md:mb-4 text-xl font-medium border-0 focus:outline-none focus:ring-0"
+          className="w-full py-5 mb-4 text-3xl font-bold text-gray-600 border-0 focus:outline-none focus:ring-0"
           type="text"
           id="title"
           placeholder="Note Title"
@@ -46,14 +44,14 @@ const Main = ({ activeNote, onUpdateNote }) => {
       </div>
       <div
         className={
-          "w-full h-full my-8 px-4  md:px-10 lg:px-20 overflow-auto " +
+          "w-full h-full mt-2 md:mt-8 px-4 md:px-10 lg:px-36 overflow-auto " +
           (edit ? "toggle--edit" : "")
         }
       >
-        <h1 className="w-full mb-2 md:mb-4 text-xl font-medium ">
+        <h1 className="w-full py-5 mb-4 text-3xl font-bold text-gray-600">
           {activeNote.title}
         </h1>
-        <ReactMarkdown className="markdown-preview ">
+        <ReactMarkdown className="w-full prose" remarkPlugins={[remarkGfm]}>
           {activeNote.body}
         </ReactMarkdown>
       </div>
