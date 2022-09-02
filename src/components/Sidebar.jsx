@@ -1,4 +1,5 @@
-import { GoDiffAdded } from "react-icons/go";
+import { GoDiffAdded, GoMarkdown } from "react-icons/go";
+import { useMediaQuery } from "react-responsive";
 
 const Sidebar = ({
   notes,
@@ -6,8 +7,11 @@ const Sidebar = ({
   setActiveNote,
   isNotesOpen,
   setIsNotesOpen,
+  setEdit,
 }) => {
   const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
+
+  const isMobile = useMediaQuery({ query: `(max-width: 640px)` });
 
   return (
     <div
@@ -25,7 +29,7 @@ const Sidebar = ({
             className="text-2xl text-gray-600 "
             onClick={() => {
               onAddNote();
-              setIsNotesOpen(false);
+              setEdit(true);
             }}
           >
             <GoDiffAdded />
@@ -53,18 +57,17 @@ const Sidebar = ({
       </div>
 
       <div>
-        {sortedNotes.map(({ id, title, body, lastModified }, i) => (
+        {sortedNotes.map(({ id, title, body }, i) => (
           <div
-            className="py-4 px-4 md:px-6 lg:px-8 pt-8 border-b hover:bg-gray-100"
+            className="py-4 px-4 md:px-6 lg:px-8 pt-8 border-b hover:bg-gray-100 "
             onClick={() => {
               setActiveNote(id);
               setIsNotesOpen(false);
             }}
           >
-            <div className="flex justify-between  ">
-              <h1 className="text-lg text-gray-700 truncate">{title}</h1>
-            </div>
-
+            <h1 className="text-lg text-gray-700 truncate font-bold">
+              {title}
+            </h1>
             <p className="text-sm truncate font-normal tracking-wide leading-relaxed max-w-sm text-gray-500 pr-2">
               {body}
             </p>
