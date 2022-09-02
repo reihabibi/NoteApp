@@ -52,7 +52,7 @@ function App() {
 
   const [isNotesOpen, setIsNotesOpen] = useState(true);
 
-  const [edit, setEdit] = useState(true);
+  const [edit, setEdit] = useState(false);
 
   return (
     <div className="flex w-screen h-screen overflow-hidden">
@@ -62,10 +62,11 @@ function App() {
         setActiveNote={setActiveNote}
         isNotesOpen={isNotesOpen}
         setIsNotesOpen={setIsNotesOpen}
+        setEdit={setEdit}
       />
       <div
         className={
-          "h-full pb-40 overflow-hidden " +
+          "absolute right-0 h-full py-4 px-2 overflow-hidden ease-in-out duration-700 " +
           (isNotesOpen ? "w-0 md:w-4/6 lg:w-4/5 " : "w-full")
         }
       >
