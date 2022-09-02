@@ -90,13 +90,14 @@ const Navbar = ({
               Light
             </button>
           </div>
-          <button className="w-full py-4 border-b ">Info</button>
-          <button
-            className="w-full py-4 border-b  "
-            onClick={() => setIsOpenMenu(true)}
-          >
-            Future Updates
-          </button>
+          <div className="w-full py-4 border-b text-center ">
+            <a
+              href="https://www.markdownguide.org/cheat-sheet/"
+              target="_blank"
+            >
+              Markdown Info
+            </a>
+          </div>
           <button
             className="w-full py-4 text-red-500 "
             onClick={(e) =>
