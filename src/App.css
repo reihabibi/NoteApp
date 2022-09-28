@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+.toggle--edit {
+  /* Hide */
+  display: none;
+  color: red;
+}
+
+.toggle--show {
+  /* Show */
+  display: block;
+}
