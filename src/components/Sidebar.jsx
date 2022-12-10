@@ -16,13 +16,13 @@ const Sidebar = ({
   return (
     <div
       className={
-        " md:w-2/6 lg:w-1/5 h-full z-10 border-r overflow-y-scroll ease-in-out duration-700 bg-white " +
+        "px-4 md:w-2/6 lg:w-1/5 h-full z-10 overflow-y-scroll ease-in-out duration-700 bg-white " +
         (isNotesOpen
           ? " translate-x-0 w-full "
           : " -translate-x-full absolute ")
       }
     >
-      <div className="sticky top-0 py-5 px-2 md:px-2 lg:px-4 bg-white">
+      <div className="sticky top-0 py-5 bg-white">
         <div className="flex justify-between items-center mt-2 mb-5">
           <h1 class="text-xl font-medium text-gray-900">My Notes</h1>
           <button
@@ -59,17 +59,17 @@ const Sidebar = ({
       <div>
         {sortedNotes.map(({ id, title, body }, i) => (
           <div
-            className="py-4 px-4 md:px-6 lg:px-8 pt-8 border-b hover:bg-gray-100 "
+            className="py-4 px-4 md:px-6 lg:px-8 mb-4 hover:bg-gray-100 border rounded-lg"
             onClick={() => {
               setActiveNote(id);
               setIsNotesOpen(false);
             }}
           >
-            <h1 className="text-lg text-gray-700 truncate font-bold">
+            <h1 className="mt-4 text-lg text-gray-700 truncate font-bold">
               {title}
             </h1>
-            <p className="text-sm truncate font-normal tracking-wide leading-relaxed max-w-sm text-gray-500 pr-2">
-              {body}
+            <p className="mt-2 text-sm font-normal tracking-wide leading-relaxed text-gray-500">
+              {body.substring(0,80)}
             </p>
           </div>
         ))}
