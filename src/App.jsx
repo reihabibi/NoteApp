@@ -56,18 +56,10 @@ function App() {
 
   return (
     <div className="flex w-screen h-screen overflow-hidden">
-      <Sidebar
-        notes={notes}
-        onAddNote={onAddNote}
-        setActiveNote={setActiveNote}
-        isNotesOpen={isNotesOpen}
-        setIsNotesOpen={setIsNotesOpen}
-        setEdit={setEdit}
-      />
       <div
         className={
-          "absolute right-0 h-full py-4 px-2 overflow-hidden ease-in-out duration-700 " +
-          (isNotesOpen ? "w-0 md:w-4/6 lg:w-4/5 " : "w-full")
+          "absolute right-0 h-full py-4 overflow-hidden ease-in-out duration-700 " +
+          (isNotesOpen ? "md:w-4/6 lg:w-4/5 " : "w-full")
         }
       >
         <Navbar
@@ -84,6 +76,14 @@ function App() {
           edit={edit}
         />
       </div>
+      <Sidebar
+        notes={notes}
+        onAddNote={onAddNote}
+        setActiveNote={setActiveNote}
+        isNotesOpen={isNotesOpen}
+        setIsNotesOpen={setIsNotesOpen}
+        setEdit={setEdit}
+      />
     </div>
   );
 }

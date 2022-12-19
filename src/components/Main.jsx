@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useMediaQuery } from "react-responsive";
 
 const Main = ({ activeNote, onUpdateNote, edit }) => {
   const onEditField = (field, value) => {
@@ -10,6 +13,10 @@ const Main = ({ activeNote, onUpdateNote, edit }) => {
     });
   };
 
+  const isMobile = useMediaQuery({ query: `(max-width: 1280px)` });
+
+  const [markdownValue, setmarkdownValue] = useState(false);
+
   if (!activeNote)
     return (
       <div className="w-full h-full flex justify-center pt-40">
@@ -18,11 +25,17 @@ const Main = ({ activeNote, onUpdateNote, edit }) => {
     );
 
   return (
-    <div className="w-full h-full">
+    <div className="flex w-full h-full mt-2 md:mt-20 px-4 md:px-10 lg:px-24 ">
       <div
         className={
-          "w-full h-full mt-2 md:mt-8 px-2 md:px-4 md:px-10 lg:px-36 overflow-hidden " +
-          (!edit ? "toggle--edit" : "")
+          "h-full xl:mx-8 overflow-hidden " +
+          (isMobile
+            ? edit
+              ? " w-full "
+              : "hidden "
+            : edit
+            ? " w-1/2 border-r "
+            : " hidden ")
         }
       >
         <input
@@ -44,16 +57,27 @@ const Main = ({ activeNote, onUpdateNote, edit }) => {
       </div>
       <div
         className={
-          "w-full h-full mt-2 md:mt-8 px-2 md:px-10 lg:px-36 overflow-auto " +
-          (edit ? "toggle--edit" : "")
+          "h-full px-2 xl:mx-8 " +
+          (isMobile
+            ? edit
+              ? " hidden  "
+              : " w-full  "
+            : edit
+            ? " w-1/2 "
+            : " w-full ")
         }
       >
         <h1 className="w-full py-5 mb-4 text-3xl font-bold text-gray-600">
-          {activeNote.title}
+          {edit ? activeNote.title : activeNote.title}
         </h1>
-        <ReactMarkdown className="w-full prose" remarkPlugins={[remarkGfm]}>
-          {activeNote.body}
-        </ReactMarkdown>
+        <div className="h-full w-full pb-14 overflow-auto">
+          <ReactMarkdown
+            className="w-full prose pb-14"
+            remarkPlugins={[remarkGfm]}
+          >
+            {activeNote.body}
+          </ReactMarkdown>
+        </div>
       </div>
     </div>
   );
