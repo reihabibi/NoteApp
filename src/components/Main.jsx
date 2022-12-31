@@ -28,7 +28,7 @@ const Main = ({ activeNote, onUpdateNote, edit }) => {
     <div className="flex w-full h-full mt-2 md:mt-20 px-4 md:px-10 lg:px-24 ">
       <div
         className={
-          "h-full xl:mx-8 overflow-hidden " +
+          "h-full px-2 xl:mx-8 overflow-hidden " +
           (isMobile
             ? edit
               ? " w-full "

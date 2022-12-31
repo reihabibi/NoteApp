@@ -59,7 +59,7 @@ function App() {
       <div
         className={
           "absolute right-0 h-full py-4 overflow-hidden ease-in-out duration-700 " +
-          (isNotesOpen ? "md:w-4/6 lg:w-4/5 " : "w-full")
+          (isNotesOpen ? "md:w-4/6 lg:w-9/12 " : "w-full")
         }
       >
         <Navbar

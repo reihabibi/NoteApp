@@ -22,28 +22,27 @@ const Navbar = ({
     return (
       <div
         className={
-          "fixed top-0 bg-white " +
+          "fixed py-1 top-0 bg-white " +
           (isNotesOpen ? "w-0 md:w-4/6 lg:w-4/5 " : "w-full")
         }
       >
-        <div className="flex justify-between items-center w-full px-4 md:px-14 py-7">
+        <div className="flex justify-between items-center w-full px-4 md:px-10 py-7">
           <button
-            className="text-3xl text-gray-600 font-bold"
+            className="w-6 h-6 text-black hover:text-blue-700"
             onClick={() => setIsNotesOpen(!isNotesOpen)}
           >
-            <GoNote />
+            <GoNote className="w-full h-full"/>
           </button>
 
-          <div className="fixed right-6 flex gap-6">
+          <div className="fixed right-6 flex gap-6 items-center">
             <div
               class="inline-flex rounded-2xl bg-gray-100 p-1 gap-2"
-              role="group"
             >
               <button
                 type="button"
                 onClick={() => setEdit(true)}
                 class={
-                  "py-2 px-4 text-xs md:text-sm font-medium text-gray-700  rounded-2xl hover:bg-white ease-in-out duration-300 " +
+                  "py-1 px-4 text-xs md:text-sm font-medium text-gray-700  rounded-2xl hover:bg-white ease-in-out duration-300 " +
                   (edit ? "bg-white shadow-md text-blue-700" : "")
                 }
               >
@@ -53,7 +52,7 @@ const Navbar = ({
                 type="button"
                 onClick={() => setEdit(false)}
                 class={
-                  "py-2 px-4 text-xs md:text-sm font-medium text-gray-700  rounded-2xl hover:bg-white ease-in-out duration-300 " +
+                  "py-1 px-4 text-xs md:text-sm font-medium text-gray-700  rounded-2xl hover:bg-white ease-in-out duration-300 " +
                   (!edit ? "bg-white shadow-md text-blue-700" : "")
                 }
               >
@@ -61,7 +60,7 @@ const Navbar = ({
               </button>
 
               <button
-                className=" py-2 px-8 text-xs md:text-sm font-medium text-gray-400 border-l-2 hover:text-red-500 "
+                className=" py-1 px-8 text-xs md:text-sm font-medium text-gray-400 border-l-2 hover:text-red-500 "
                 onClick={(e) =>
                   onDeleteNote(activeNote.id) + setIsNotesOpen(true)
                 }
@@ -70,10 +69,10 @@ const Navbar = ({
               </button>
             </div>
             <button
-              className="text-3xl text-gray-700 hover:text-gray-500"
+              className="w-6 h-6 text-black hover:text-blue-700"
               onClick={() => setIsOpenMenu(!isOpenMenu)}
             >
-              <BiMenu />
+              <BiMenu className="w-full h-full"/>
             </button>
           </div>
         </div>
@@ -118,7 +117,7 @@ const Navbar = ({
       <>
         <div
           className={
-            "bg-gray-100 absolute bottom-0 w-full pt-14 pb-16 rounded-t-3xl ease-in-out duration-500 " +
+            "bg-gray-100 absolute bottom-0 w-full pt-14 pb-16 rounded-t-3xl ease-in-out duration-300 " +
             (!isOpenMenuMobile
               ? "translate-y-full scale-y-0 "
               : "  translate-y-0 ")
@@ -157,18 +156,18 @@ const Navbar = ({
         <div className="absolute bottom-0 w-full h-14 px-4 flex justify-between items-center bg-gray-100 border-t ">
           <div className="flex justify-between items-center">
             <button
-              className="text-2xl text-gray-500"
+              className="w-6 h-6 text-black "
               onClick={() => setIsNotesOpen(!isNotesOpen)}
             >
-              <GoNote />
+              <GoNote className="w-full h-full" />
             </button>
           </div>
-          <div class="inline-flex rounded-2xl p-1 gap-2" role="group">
+          <div class="inline-flex rounded-2xl p-1 gap-2 items-center">
             <button
               type="button"
               onClick={() => setEdit(true)}
               class={
-                "py-2 px-4 text-sm  font-medium text-gray-700  rounded-2xl  ease-in-out duration-300  " +
+                "py-2 px-6 text-sm  font-medium text-gray-700  rounded-2xl  ease-in-out duration-300  " +
                 (edit ? "bg-white shadow-md text-blue-700" : "")
               }
             >
@@ -178,17 +177,17 @@ const Navbar = ({
               type="button"
               onClick={() => setEdit(false)}
               class={
-                "py-2 px-4 text-sm  font-medium text-gray-700  rounded-2xl  ease-in-out duration-300  " +
+                "py-2 px-6 text-sm  font-medium text-gray-700  rounded-2xl  ease-in-out duration-300  " +
                 (!edit ? "bg-white shadow-md text-blue-700" : "")
               }
             >
               Preview
             </button>
             <button
-              className="ml-3 text-2xl text-gray-500"
+              className="ml-3 w-6 h-6 text-black"
               onClick={() => setIsOpenMenuMobile(!isOpenMenuMobile)}
             >
-              <BiMenu />
+              <BiMenu className="w-full h-full" />
             </button>
           </div>
         </div>
